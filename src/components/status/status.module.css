@@ -9,6 +9,7 @@
   gap: 0.5rem;
   text-transform: uppercase;
   font-weight: 500;
+  font-size: 12px;
 
   svg {
     width: 1rem;
@@ -17,16 +18,16 @@
 
   &.approved {
     background-color: var(--success);
-    color: var(--text-contrast);
+    color: var(--warning-text-contrast);
   }
 
   &.pending {
     background-color: var(--warning);
-    color: var(--text-contrast);
+    color: var(--warning-text-contrast);
   }
 
   &.rejected {
     background-color: var(--error);
-    color: var(--text);
+    color: var(--error-text-contrast);
   }
 }

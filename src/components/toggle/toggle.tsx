@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 export const Toggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true",
+    localStorage.getItem("darkMode") === "true"
   );
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export const Toggle = () => {
   }, [isDarkMode]);
 
   return (
-    <div>
+    <div className={styles.toggle}>
       <input
         type="checkbox"
         className={styles.checkbox}
@@ -36,6 +36,18 @@ export const Toggle = () => {
           )}
         </span>
       </label>
+      <div
+        className={clsx(styles.inactiveBall, {
+          [styles.inactiveAnimation]: isDarkMode,
+        })}
+        onClick={() => setIsDarkMode(!isDarkMode)}
+      >
+        {isDarkMode ? (
+          <SunIcon className={styles.sunIconInactive} />
+        ) : (
+          <MoonIcon className={styles.moonIconInactive} />
+        )}
+      </div>
     </div>
   );
 };

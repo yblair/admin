@@ -5,6 +5,7 @@
 html,
 body {
   margin: 0;
+  background-color: var(--neutral-gray-100);
 }
 
 html {
@@ -24,7 +25,7 @@ h4,
 h5,
 h6 {
   line-height: 1.2;
-  margin-block: 1.75rlh 0.25rlh;
+  margin: 0;
 }
 
 ul,
@@ -35,7 +36,7 @@ ol {
 ul,
 ol,
 p {
-  margin-block: 0.75rlh;
+  margin: 0;
 }
 
 pre {

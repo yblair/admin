@@ -4,6 +4,7 @@
   justify-content: space-between;
   transition: width 0.25s;
   padding-right: 1rem;
+  min-width: 238px;
 
   ul {
     list-style: none;
@@ -19,6 +20,7 @@
       color: var(--text);
       gap: 0.5rem;
       align-items: center;
+      font-weight: 500;
 
       svg {
         width: 1rem;
@@ -27,7 +29,8 @@
 
       &[aria-current="page"] {
         background-color: var(--main);
-        color: var(--text-contrast);
+        color: var(--error-text-contrast);
+        font-weight: 700;
       }
     }
   }
@@ -42,13 +45,14 @@
     padding-top: 1.5rem;
     border-top: thin solid var(--neutral-gray-300);
     color: var(--main);
+
     svg {
       height: 1rem;
     }
   }
 
   &.collapsed {
-    width: 64px;
+    min-width: 64px;
     align-items: center;
 
     span {

@@ -1,0 +1,78 @@
+.tableContainer {
+  color: var(--neutral-gray-800);
+  margin: 24px 0 0 0;
+  border: 1px solid var(--neutral-gray-300);
+  border-radius: 24px;
+  padding: 24px 0px 24px 24px;
+  height: calc(100vh - 220px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.table {
+  margin-top: 16px;
+  width: 100%;
+  border-spacing: 0;
+  table-layout: fixed;
+  padding-right: 24px;
+}
+
+.tableWrapper {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableHeader {
+  flex-shrink: 0;
+}
+
+.tableBody {
+  flex: 1;
+  overflow-y: auto;
+  display: block;
+}
+
+.tableBody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.tableRow {
+  height: 63px;
+  border-bottom: 1px solid var(--neutral-gray-200);
+}
+
+.tableRow:last-child {
+  text-align: right;
+}
+
+.tableTitle {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 100%;
+  text-align: left;
+  padding: 8px 0px;
+  border-bottom: 1px solid var(--neutral-gray-200);
+}
+
+.tableTitle:last-child {
+  text-align: right;
+}
+
+.email {
+  font-size: 12px;
+}
+
+.customer {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.amount {
+  font-weight: 700;
+  font-size: 14px;
+}

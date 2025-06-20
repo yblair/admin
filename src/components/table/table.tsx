@@ -7,6 +7,8 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import styles from "./table.module.css";
+import { Status } from "../status/status";
 
 export type ProductStatusProps = "Approved" | "Pending" | "Rejected";
 
@@ -29,6 +31,12 @@ const defaultColumns: ColumnDef<ProductProps>[] = [
   {
     header: "Customer",
     accessorKey: "customer",
+    cell: ({ row }) => (
+      <div>
+        <div className={styles.customer}>{row.original.customer}</div>
+        <div className={styles.email}>{row.original.email}</div>
+      </div>
+    ),
   },
   {
     header: "Date",
@@ -41,10 +49,14 @@ const defaultColumns: ColumnDef<ProductProps>[] = [
   {
     header: "Status",
     accessorKey: "status",
+    cell: ({ row }) => <Status status={row.original.status} />,
   },
   {
     header: "Amount",
     accessorKey: "amount",
+    cell: ({ row }) => (
+      <div className={styles.amount}>{row.original.amount}</div>
+    ),
   },
 ];
 
@@ -65,42 +77,52 @@ export const Table = ({ data }: Props) => {
   });
 
   return (
-    <div>
+    <div className={styles.tableContainer}>
       <h2>Transactions</h2>
       <p>Recent transactions from your store.</p>
-      <table>
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th
-                  key={header.id}
-                  colSpan={header.colSpan}
-                  onClick={header.column.getToggleSortingHandler()}
-                >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead className={styles.tableHeader}>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th
+                    key={header.id}
+                    colSpan={header.colSpan}
+                    onClick={header.column.getToggleSortingHandler()}
+                    className={styles.tableTitle}
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+        </table>
+        <div className={styles.tableBody}>
+          <table className={styles.table}>
+            <tbody>
+              {table.getRowModel().rows.map((row) => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id} className={styles.tableRow}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
                       )}
-                </th>
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

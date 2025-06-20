@@ -20,7 +20,8 @@ html {
   --error: hsla(3, 57%, 52%, 1);
 
   --text: hsla(90, 6%, 7%, 1);
-  --text-contrast: hsla(0, 0%, 98%, 1);
+  --error-text-contrast: hsla(0, 0%, 98%, 1);
+  --warning-text-contrast: hsla(90, 6%, 7%, 1);
 
   --shadow: hsla(0, 0%, 0%, 0.2);
 
@@ -42,7 +43,8 @@ html {
     --main: hsla(0, 0%, 88%, 1);
 
     --text: hsla(0, 0%, 98%, 1);
-    --text-contrast: hsla(90, 6%, 7%, 1);
+    --error-text-contrast: hsla(90, 6%, 7%, 1);
+    --warning-text-contrast: hsla(0, 0%, 98%, 1);
 
     --shadow: hsla(0, 0%, 0%, 0.5);
   }

@@ -2,5 +2,4 @@
 @import url("reset.css") layer(reset);
 @import url("default.css") layer(default);
 @import url("ui.css") layer(ui);
-
-@layer theme, reset, default, ui;
+@layer theme, reset, default;
