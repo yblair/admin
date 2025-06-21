@@ -9,15 +9,15 @@ import {
 } from "@tanstack/react-table";
 import styles from "./table.module.css";
 import { Status } from "../status/status";
-
-export type ProductStatusProps = "Approved" | "Pending" | "Rejected";
+import Drawer from "../drawer/drawer";
+import type { Status as StatusType } from "../../constants/status";
 
 export type ProductProps = {
   id: number;
   customer: string;
   date: string;
   product: string;
-  status: ProductStatusProps;
+  status: StatusType;
   email: string;
   amount: string;
   paymentMethod: string;
@@ -62,7 +62,10 @@ const defaultColumns: ColumnDef<ProductProps>[] = [
 
 export const Table = ({ data }: Props) => {
   const [columns] = React.useState(() => [...defaultColumns]);
-
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [drawerContent, setDrawerContent] = React.useState<ProductProps | null>(
+    null
+  );
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const table = useReactTable({
@@ -75,6 +78,13 @@ export const Table = ({ data }: Props) => {
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
   });
+
+  const transactionForDrawer = drawerContent
+    ? {
+        ...drawerContent,
+        amount: parseFloat(drawerContent.amount.replace("$", "")),
+      }
+    : null;
 
   return (
     <div className={styles.tableContainer}>
@@ -103,12 +113,23 @@ export const Table = ({ data }: Props) => {
               </tr>
             ))}
           </thead>
+          <Drawer
+            isOpen={isDrawerOpen}
+            onClose={() => setIsDrawerOpen(false)}
+            transaction={transactionForDrawer}
+          />
         </table>
         <div className={styles.tableBody}>
           <table className={styles.table}>
             <tbody>
               {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
+                <tr
+                  key={row.id}
+                  onClick={() => {
+                    setDrawerContent(row.original);
+                    setIsDrawerOpen(true);
+                  }}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className={styles.tableRow}>
                       {flexRender(

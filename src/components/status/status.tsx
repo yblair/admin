@@ -1,26 +1,27 @@
 import clsx from "clsx";
-import type { ProductStatusProps } from "../table/table";
 import styles from "./status.module.css";
 import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import type { Status as StatusType } from "../../constants/status";
+import { APPROVED, PENDING, REJECTED } from "../../constants/status";
 
-const getStatusStyles = (status: ProductStatusProps) => {
+const getStatusStyles = (status: StatusType) => {
   return clsx(styles.container, {
-    [styles.approved]: status === "Approved",
-    [styles.pending]: status === "Pending",
-    [styles.rejected]: status === "Rejected",
+    [styles.approved]: status === APPROVED,
+    [styles.pending]: status === PENDING,
+    [styles.rejected]: status === REJECTED,
   });
 };
 
-export const Status = ({ status }: { status: ProductStatusProps }) => {
+export const Status = ({ status }: { status: StatusType }) => {
   return (
     <div className={getStatusStyles(status)}>
-      {status === "Approved" && <CheckCircleIcon aria-label="true" />}
-      {status === "Pending" && <ExclamationTriangleIcon aria-hidden="true" />}
-      {status === "Rejected" && <XMarkIcon aria-hidden="true" />}
+      {status === APPROVED && <CheckCircleIcon aria-label="true" />}
+      {status === PENDING && <ExclamationTriangleIcon aria-hidden="true" />}
+      {status === REJECTED && <XMarkIcon aria-hidden="true" />}
       <p>{status}</p>
     </div>
   );

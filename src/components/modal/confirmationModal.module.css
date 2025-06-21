@@ -1,0 +1,80 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: var(--neutral-gray-50);
+  border: 1px solid var(--neutral-gray-300);
+  border-radius: 24px;
+  padding: 32px;
+  width: 650px;
+  max-width: 90%;
+  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.07);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--neutral-gray-800);
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 16px;
+  color: var(--neutral-gray-800);
+  margin-bottom: 16px;
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.productImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.productName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--neutral-gray-800);
+}
+
+.productSku {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--neutral-gray-600);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--neutral-gray-200);
+  margin-bottom: 32px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.actions > button {
+  flex: 0 1 auto;
+  min-width: 120px;
+}

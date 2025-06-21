@@ -2,6 +2,7 @@ import { ProductProps, Table } from "../components/table/table";
 import Card from "../components/dashboard/Card";
 import data from "../data/data.json";
 import styles from "./root.module.css";
+import EmptyState from "../components/emptyState/EmptyState";
 
 export const Dashboard = () => {
   return (
@@ -17,10 +18,16 @@ export const Dashboard = () => {
           />
         ))}
       </div>
-
-      <div className={styles.tableSection}>
-        <Table data={data.orders as ProductProps[]} />
-      </div>
+      {data.orders.length > 0 ? (
+        <div className={styles.tableSection}>
+          <Table data={data.orders as ProductProps[]} />
+        </div>
+      ) : (
+        <EmptyState
+          title="No transactions yet"
+          description="There’s currently no transactions"
+        />
+      )}
     </div>
   );
 };

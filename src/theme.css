@@ -40,7 +40,12 @@ html {
     --neutral-gray-800: hsla(0, 0%, 88%, 1);
     --neutral-gray-900: hsla(0, 0%, 93%, 1);
 
-    --main: hsla(0, 0%, 88%, 1);
+    /*  --main: hsla(0, 0%, 88%, 1);  */
+    --main: hsla(203, 75%, 74%, 1);
+
+    --success: hsla(155, 87%, 43%, 1);
+    --warning: hsla(30, 100%, 69%, 1);
+    --error: hsla(3, 96%, 72%, 1);
 
     --text: hsla(0, 0%, 98%, 1);
     --error-text-contrast: hsla(90, 6%, 7%, 1);

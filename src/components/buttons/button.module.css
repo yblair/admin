@@ -1,0 +1,40 @@
+.button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: opacity 0.2s;
+  border: 1px solid transparent;
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.reject {
+  background-color: transparent;
+  color: var(--error);
+  border-color: var(--color-status-error);
+}
+
+.cancel {
+  background-color: transparent;
+  color: var(--warning-text-contrast);
+  border-color: var(--success);
+}
+
+.accept {
+  background-color: var(--success);
+  color: var(--warning-text-contrast);
+  border: none;
+}
+
+.disabled {
+  background-color: var(--neutral-gray-100);
+  color: var(--neutral-gray-600);
+  cursor: not-allowed;
+  border-color: var(--neutral-gray-200);
+}
