@@ -5,6 +5,7 @@
   transition: width 0.25s;
   padding-right: 1rem;
   min-width: 238px;
+  padding-top: 24px;
 
   ul {
     list-style: none;
