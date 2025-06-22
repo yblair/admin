@@ -47,7 +47,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           <ActionButton type="cancel" onClick={onClose}>
             CANCEL
           </ActionButton>
-          <ActionButton type="accept" onClick={onConfirm}>
+          <ActionButton type={actionType} onClick={onConfirm}>
             {confirmButtonText}
           </ActionButton>
         </div>

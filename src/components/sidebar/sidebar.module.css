@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: width 0.25s;
+  transition: width 0.25s ease-in-out, min-width 0.25s ease-in-out;
   padding-right: 1rem;
   min-width: 238px;
 
@@ -23,12 +23,14 @@
   text-decoration: none;
   gap: 0.5rem;
   align-items: center;
+  transition: all 0.25s ease-in-out;
 }
 
 .inactive svg,
 .active svg {
   width: 1rem;
   height: 1rem;
+  transition: transform 0.25s ease-in-out;
 }
 
 .inactive {
@@ -53,30 +55,43 @@
   padding-top: 1.5rem;
   border-top: thin solid var(--neutral-gray-300);
   color: var(--custom2-main);
+  transition: all 0.25s ease-in-out;
 }
 
 .sidebar button svg {
   height: 1rem;
+  transition: transform 0.25s ease-in-out;
+}
+
+.collapse {
+  cursor: pointer;
 }
 
 .sidebar.collapsed {
   min-width: 64px;
   align-items: center;
+  transition: width 0.25s ease-in-out, min-width 0.25s ease-in-out;
 }
 
 .sidebar.collapsed span {
   display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
 }
 
 .sidebar.collapsed button {
   justify-content: center;
+  transition: justify-content 0.25s ease-in-out;
 }
 
 .sidebar.collapsed button svg {
   transform: rotate(180deg);
+  transition: transform 0.25s ease-in-out;
 }
 .sidebar.collapsed button span {
   display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
 }
 
 @media (max-width: 1024px) {

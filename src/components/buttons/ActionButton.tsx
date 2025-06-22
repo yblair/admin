@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./button.module.css";
 
-type ButtonType = "accept" | "reject" | "disabled" | "cancel";
+type ButtonType = "accept" | "approve" | "reject" | "disabled" | "cancel";
 
 interface ActionButtonProps {
   onClick?: () => void;
@@ -16,7 +16,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   children,
 }) => {
   const buttonClasses = clsx(styles.button, {
-    [styles.accept]: type === "accept",
+    [styles.accept]: type === "accept" || type === "approve",
     [styles.reject]: type === "reject",
     [styles.cancel]: type === "cancel",
     [styles.disabled]: type === "disabled",

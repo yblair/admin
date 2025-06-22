@@ -6,12 +6,12 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <Link to={`/`}>
-        <img src="logo.png" alt="Home" className={styles.img} />
+        <img src="logo.png" alt="link to home" className={styles.img} />
       </Link>
       <div>
         <div className={styles.user}>
           <Toggle />
-          <img src="user.png" alt="user" />
+          <img src="user.png" alt="user image" />
           <p>Hi, {user}!</p>
         </div>
       </div>

@@ -26,7 +26,8 @@
   border-color: var(--success);
 }
 
-.accept {
+.accept,
+.approve {
   background-color: var(--success);
   color: var(--success-text-contrast);
   border: none;
