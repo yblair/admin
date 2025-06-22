@@ -18,11 +18,12 @@ const getStatusStyles = (status: StatusType) => {
 
 export const Status = ({ status }: { status: StatusType }) => {
   return (
-    <div className={getStatusStyles(status)} aria-label={"status: " + status}>
+    <div className={getStatusStyles(status)}>
       {status === APPROVED && <CheckCircleIcon aria-hidden="true" />}
       {status === PENDING && <ExclamationTriangleIcon aria-hidden="true" />}
       {status === REJECTED && <XMarkIcon aria-hidden="true" />}
       <p aria-hidden="true">{status}</p>
+      <div className={styles.srOnly}>Status: {status}</div>
     </div>
   );
 };

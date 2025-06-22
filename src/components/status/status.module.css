@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   padding: 0.25rem 0.5rem;
@@ -20,6 +21,16 @@
     p {
       display: none;
     }
+  }
+  .srOnly {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    position: absolute;
   }
 
   &.approved {
