@@ -32,7 +32,7 @@
 
 .title {
   font-size: var(--body2);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   color: var(--primary-text-contrast);
   margin: 0;
 }
@@ -62,7 +62,7 @@
 
 .amount {
   font-size: var(--font-h4);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--primary-text-contrast);
   line-height: 1.2;
   margin: 0;
@@ -74,7 +74,7 @@
 
 .today {
   font-size: var(--font-caption);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   margin: 0;
 }
 

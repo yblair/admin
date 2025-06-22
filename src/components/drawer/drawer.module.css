@@ -65,7 +65,7 @@
 
 .title {
   font-size: var(--font-h4);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   margin-bottom: 4px;
   color: var(--custom2-main);
 }
@@ -74,7 +74,7 @@
   font-size: var(--font-subtitle1);
   color: var(--custom2-light);
   margin-bottom: 24px;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
 }
 
 .details {
@@ -102,7 +102,7 @@
 
 .detailValue {
   color: var(--neutral-gray-600);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .actions {

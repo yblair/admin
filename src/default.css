@@ -10,7 +10,7 @@ body {
   padding: 1rem;
   background-color: var(--neutral-gray-100);
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   font-style: normal;
   color: var(--primary-text-contrast);
   -webkit-font-smoothing: antialiased;

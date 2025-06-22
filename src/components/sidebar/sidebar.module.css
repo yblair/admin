@@ -34,13 +34,13 @@
 .inactive {
   background-color: var(--neutral-gray-50);
   color: var(--primary-text-contrast);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .active {
   background-color: var(--custom2-main);
   color: var(--error-text-contrast);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .sidebar button {

@@ -16,12 +16,12 @@
 
 .title {
   font-size: var(--font-subtitle1);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--custom2-main);
 }
 
 .description {
   font-size: var(--body1);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   color: var(--custom2-main);
 }

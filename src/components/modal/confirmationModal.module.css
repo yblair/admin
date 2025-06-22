@@ -20,7 +20,7 @@
 
 .title {
   font-size: var(--font-h5);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--neutral-gray-800);
   margin-bottom: 16px;
 }
@@ -52,13 +52,13 @@
 
 .productName {
   font-size: var(--body2);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--neutral-gray-800);
 }
 
 .productSku {
   font-size: var(--font-caption);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   color: var(--neutral-gray-600);
 }
 

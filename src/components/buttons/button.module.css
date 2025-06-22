@@ -2,7 +2,7 @@
   flex: 1;
   padding: 12px;
   border-radius: 40px;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   font-size: var(--font-caption);
   cursor: pointer;
   text-align: center;

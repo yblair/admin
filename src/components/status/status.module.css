@@ -8,7 +8,7 @@
   max-width: fit-content;
   gap: 0.5rem;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: var(--font-caption);
 
   svg {

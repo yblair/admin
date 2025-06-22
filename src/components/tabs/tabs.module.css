@@ -12,7 +12,7 @@
 
     &[aria-current="page"] {
       border-bottom: 2px solid var(--success);
-      font-weight: 700;
+      font-weight: var(--font-weight-bold);
     }
   }
 }

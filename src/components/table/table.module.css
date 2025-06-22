@@ -51,7 +51,7 @@
 
 .tableTitle {
   font-size: var(--font-caption);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-align: left;
   padding: 24px 0px 9px 0px;
@@ -67,11 +67,11 @@
 }
 
 .customer {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   font-size: var(--body2);
 }
 
 .amount {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   font-size: var(--body2);
 }

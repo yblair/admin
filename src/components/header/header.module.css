@@ -4,7 +4,7 @@
   align-items: center;
   height: 5rem;
   padding: 24px 18px;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--custom2-main);
 }
 

@@ -79,6 +79,7 @@ html {
 
   --font-weight-bold: 700;
   --font-weight-regular: 400;
+  --font-weight-medium: 500;
 }
 
 @media (max-width: 768px) {
