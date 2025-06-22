@@ -17,8 +17,10 @@ const EmptyState: React.FC<EmptyStateProps> = ({
       <div className={styles.iconWrapper}>
         {image && <img src={image} alt={description} />}
       </div>
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.description}>{description}</p>
+      <div className={styles.content} tabIndex={0}>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.description}>{description}</p>
+      </div>
     </div>
   );
 };

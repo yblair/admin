@@ -21,6 +21,7 @@ export const Toggle = () => {
         className={styles.checkbox}
         id="toggle"
         checked={isDarkMode}
+        aria-label="Toggle dark mode"
         onChange={() => setIsDarkMode(!isDarkMode)}
       />
       <label htmlFor="toggle" className={styles.checkboxLabel}>

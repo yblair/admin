@@ -36,6 +36,7 @@ export const Sidebar = () => {
           <NavLink
             to={`/`}
             className={isHomeActive ? styles.active : styles.inactive}
+            aria-label="Home button"
           >
             <HomeIcon />
             <span> Home</span>
@@ -44,6 +45,7 @@ export const Sidebar = () => {
         <li>
           <NavLink
             to={`/messages`}
+            aria-label="Messages button"
             className={({ isActive }) =>
               isActive ? styles.active : styles.inactive
             }

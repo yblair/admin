@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./confirmationModal.module.css";
 import ActionButton from "../buttons/ActionButton";
 import type { Transaction } from "../drawer/drawer";
@@ -18,6 +18,14 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   transaction,
   actionType,
 }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      modalRef.current?.focus();
+    }
+  }, [isOpen]);
+
   if (!isOpen) {
     return null;
   }
@@ -28,7 +36,18 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()}
+        ref={modalRef}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") {
+            e.stopPropagation();
+            onClose();
+          }
+        }}
+      >
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.description}>{description}</p>
         <div className={styles.productInfo}>

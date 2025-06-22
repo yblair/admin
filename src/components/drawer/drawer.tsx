@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./drawer.module.css";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Status } from "../status/status";
@@ -30,6 +30,14 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, transaction }) => {
     null
   );
 
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      contentRef.current?.focus();
+    }
+  }, [isOpen]);
+
   if (!isOpen || !transaction) {
     return null;
   }
@@ -40,12 +48,11 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, transaction }) => {
   };
 
   const handleConfirmAction = () => {
-    // Here you would typically call an API to update the transaction status
     console.log(
       `Action: ${actionType} confirmed for transaction: ${transaction.id}`
     );
     setModalOpen(false);
-    onClose(); // Close drawer after action
+    onClose();
   };
 
   const handleCloseModal = () => {
@@ -56,8 +63,23 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, transaction }) => {
   return (
     <>
       <div className={styles.overlay} onClick={onClose}>
-        <div className={styles.drawer} onClick={(e) => e.stopPropagation()}>
-          <button className={styles.closeButton} onClick={onClose}>
+        <div
+          className={styles.drawer}
+          onClick={(e) => e.stopPropagation()}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              setModalOpen(false);
+              onClose();
+            }
+          }}
+          ref={contentRef}
+          tabIndex={0}
+        >
+          <button
+            className={styles.closeButton}
+            onClick={onClose}
+            aria-label="Close product detail screen"
+          >
             <XMarkIcon className={styles.closeButtonIcon} />
           </button>
 

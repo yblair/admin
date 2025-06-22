@@ -67,6 +67,9 @@ export const Table = ({ data }: Props) => {
     null
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [focusedRowRef, setFocusedRowRef] = React.useState<HTMLElement | null>(
+    null
+  );
 
   const table = useReactTable({
     data,
@@ -85,6 +88,19 @@ export const Table = ({ data }: Props) => {
         amount: parseFloat(drawerContent.amount.replace("$", "")),
       }
     : null;
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+    setTimeout(() => {
+      if (focusedRowRef) {
+        focusedRowRef.focus();
+      }
+    }, 100);
+  };
+
+  const handleRowFocus = (element: HTMLElement) => {
+    setFocusedRowRef(element);
+  };
 
   return (
     <div className={styles.tableContainer}>
@@ -116,12 +132,20 @@ export const Table = ({ data }: Props) => {
             ))}
           </thead>
         </table>
-        <div className={styles.tableBody}>
+        <div className={styles.tableBody} tabIndex={0}>
           <table className={styles.table}>
             <tbody>
               {table.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
+                  tabIndex={0}
+                  onFocus={(e) => handleRowFocus(e.currentTarget)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      setDrawerContent(row.original);
+                      setIsDrawerOpen(true);
+                    }
+                  }}
                   onClick={() => {
                     setDrawerContent(row.original);
                     setIsDrawerOpen(true);
@@ -148,6 +172,8 @@ export const Table = ({ data }: Props) => {
           <div
             key={row.id}
             className={styles.mobileCard}
+            tabIndex={0}
+            onFocus={(e) => handleRowFocus(e.currentTarget)}
             onClick={() => {
               setDrawerContent(row.original);
               setIsDrawerOpen(true);
@@ -190,7 +216,7 @@ export const Table = ({ data }: Props) => {
 
       <Drawer
         isOpen={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
+        onClose={handleDrawerClose}
         transaction={transactionForDrawer}
       />
     </div>

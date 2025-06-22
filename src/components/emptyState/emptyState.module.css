@@ -25,3 +25,10 @@
   font-weight: var(--font-weight-regular);
   color: var(--custom2-main);
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
