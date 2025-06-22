@@ -9,7 +9,7 @@
   gap: 0.5rem;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 12px;
+  font-size: var(--font-caption);
 
   svg {
     width: 1rem;
@@ -18,7 +18,7 @@
 
   &.approved {
     background-color: var(--success);
-    color: var(--warning-text-contrast);
+    color: var(--success-text-contrast);
   }
 
   &.pending {

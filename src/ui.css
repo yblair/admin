@@ -1,5 +1,6 @@
 main {
   background-color: var(--neutral-gray-50);
+  height: 87vh;
   border-radius: 1.5rem;
   border: 1px solid var(--neutral-gray-300);
   display: grid;

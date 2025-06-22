@@ -7,7 +7,7 @@
   a {
     padding: 0.5rem;
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--body2);
     color: var(--neutral-gray-900);
 
     &[aria-current="page"] {

@@ -33,15 +33,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
 }
 
 .closeButton:hover {
+  transition: all 0.2s ease;
   background-color: var(--neutral-gray-100);
 }
 
 .closeButtonIcon {
   width: 24px;
   height: 24px;
+  color: var(--neutral-gray-900);
 }
 
 .detailsContent {
@@ -60,15 +64,15 @@
 }
 
 .title {
-  font-size: 36px;
+  font-size: var(--font-h4);
   font-weight: 700;
   margin-bottom: 4px;
-  color: var(--warning-text-contrast);
+  color: var(--custom2-main);
 }
 
 .subtitle {
-  font-size: 18px;
-  color: var(--color-text-secondary);
+  font-size: var(--font-subtitle1);
+  color: var(--custom2-light);
   margin-bottom: 24px;
   font-weight: 400;
 }
@@ -84,7 +88,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
-  font-size: 14px;
+  font-size: var(--body2);
   border-bottom: 1px solid var(--neutral-gray-200);
 }
 
@@ -93,7 +97,7 @@
 }
 
 .detailLabel {
-  color: var(--color-text-secondary);
+  color: var(--custom2-main);
 }
 
 .detailValue {

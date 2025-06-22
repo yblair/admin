@@ -5,6 +5,7 @@
   height: 5rem;
   padding: 24px 18px;
   font-weight: 700;
+  color: var(--custom2-main);
 }
 
 .img {

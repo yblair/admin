@@ -3,7 +3,7 @@
   padding: 12px;
   border-radius: 40px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--font-caption);
   cursor: pointer;
   text-align: center;
   transition: opacity 0.2s;
@@ -22,13 +22,13 @@
 
 .cancel {
   background-color: transparent;
-  color: var(--warning-text-contrast);
+  color: var(--custom2-main);
   border-color: var(--success);
 }
 
 .accept {
   background-color: var(--success);
-  color: var(--warning-text-contrast);
+  color: var(--success-text-contrast);
   border: none;
 }
 

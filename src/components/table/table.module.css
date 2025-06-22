@@ -4,7 +4,7 @@
   border: 1px solid var(--neutral-gray-300);
   border-radius: 24px;
   padding: 24px 0px 24px 24px;
-  height: calc(100vh - 220px);
+  height: calc(100vh - 400px);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -50,7 +50,7 @@
 }
 
 .tableTitle {
-  font-size: 12px;
+  font-size: var(--font-caption);
   font-weight: 500;
   line-height: 100%;
   text-align: left;
@@ -63,15 +63,15 @@
 }
 
 .email {
-  font-size: 12px;
+  font-size: var(--font-caption);
 }
 
 .customer {
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--body2);
 }
 
 .amount {
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--body2);
 }

@@ -5,75 +5,82 @@
   transition: width 0.25s;
   padding-right: 1rem;
   min-width: 238px;
-  padding-top: 24px;
 
+  padding-top: 24px;
   ul {
     list-style: none;
     padding: 0;
-
-    .navigation {
-      margin-bottom: 0.5rem;
-      display: flex;
-      font-size: 0.75rem;
-      padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      color: var(--text);
-      gap: 0.5rem;
-      align-items: center;
-      font-weight: 500;
-
-      svg {
-        width: 1rem;
-        height: 1rem;
-      }
-
-      &[aria-current="page"] {
-        background-color: var(--main);
-        color: var(--error-text-contrast);
-        font-weight: 700;
-      }
-    }
   }
+}
 
-  button {
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 1.5rem;
-    border-top: thin solid var(--neutral-gray-300);
-    color: var(--main);
+.inactive,
+.active {
+  margin-bottom: 0.5rem;
+  display: flex;
+  font-size: var(--font-caption);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  gap: 0.5rem;
+  align-items: center;
+}
 
-    svg {
-      height: 1rem;
-    }
-  }
+.inactive svg,
+.active svg {
+  width: 1rem;
+  height: 1rem;
+}
 
-  &.collapsed {
-    min-width: 64px;
-    align-items: center;
+.inactive {
+  background-color: var(--neutral-gray-50);
+  color: var(--primary-text-contrast);
+  font-weight: 500;
+}
 
-    span {
-      display: none;
-    }
+.active {
+  background-color: var(--custom2-main);
+  color: var(--error-text-contrast);
+  font-weight: 700;
+}
 
-    button {
-      justify-content: center;
-      svg {
-        transform: rotate(180deg);
-      }
-      span {
-        display: none;
-      }
-    }
-  }
+.sidebar button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  border-top: thin solid var(--neutral-gray-300);
+  color: var(--custom2-main);
+}
 
-  @media (max-width: 768px) {
-    button {
-      display: none;
-    }
+.sidebar button svg {
+  height: 1rem;
+}
+
+.sidebar.collapsed {
+  min-width: 64px;
+  align-items: center;
+}
+
+.sidebar.collapsed span {
+  display: none;
+}
+
+.sidebar.collapsed button {
+  justify-content: center;
+}
+
+.sidebar.collapsed button svg {
+  transform: rotate(180deg);
+}
+.sidebar.collapsed button span {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar button {
+    display: none;
   }
 }

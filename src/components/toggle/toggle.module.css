@@ -26,7 +26,7 @@
 
 .moonIcon,
 .sunIcon {
-  color: var(--main);
+  color: var(--custom2-main);
   width: 1rem;
   height: 1rem;
 }

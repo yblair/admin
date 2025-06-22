@@ -12,7 +12,7 @@
 }
 
 .borderNegative {
-  border-color: #dc2626;
+  border-color: var(--error);
 }
 
 .borderGrey {
@@ -31,9 +31,9 @@
 }
 
 .title {
-  font-size: 14px;
+  font-size: var(--body2);
   font-weight: 400;
-  color: var(--warning-text-contrast);
+  color: var(--primary-text-contrast);
   margin: 0;
 }
 
@@ -61,9 +61,9 @@
 }
 
 .amount {
-  font-size: 36px;
+  font-size: var(--font-h4);
   font-weight: 700;
-  color: var(--warning-text-contrast);
+  color: var(--primary-text-contrast);
   line-height: 1.2;
   margin: 0;
 }
@@ -73,15 +73,15 @@
 }
 
 .today {
-  font-size: 12px;
+  font-size: var(--font-caption);
   font-weight: 400;
   margin: 0;
 }
 
 .today.positive {
-  color: #16a34a;
+  color: var(--success);
 }
 
 .today.negative {
-  color: #dc2626;
+  color: var(--error);
 }
