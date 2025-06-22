@@ -3,7 +3,7 @@ import {
   EnvelopeIcon,
   ChevronLeftIcon,
 } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 import styles from "./sidebar.module.css";
@@ -15,6 +15,19 @@ export const Sidebar = () => {
 
   const isHomeActive =
     location.pathname === "/" || location.pathname.startsWith("/orders");
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      if (window.innerWidth < 1024) {
+        setCollapsed(true);
+      } else {
+        setCollapsed(false);
+      }
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   return (
     <nav className={clsx(styles.sidebar, { [styles.collapsed]: collapsed })}>

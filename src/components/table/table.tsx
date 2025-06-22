@@ -90,6 +90,8 @@ export const Table = ({ data }: Props) => {
     <div className={styles.tableContainer}>
       <h2>Transactions</h2>
       <p>Recent transactions from your store.</p>
+
+      {/* Desktop Table */}
       <div className={styles.tableWrapper}>
         <table className={styles.table}>
           <thead className={styles.tableHeader}>
@@ -113,11 +115,6 @@ export const Table = ({ data }: Props) => {
               </tr>
             ))}
           </thead>
-          <Drawer
-            isOpen={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}
-            transaction={transactionForDrawer}
-          />
         </table>
         <div className={styles.tableBody}>
           <table className={styles.table}>
@@ -144,6 +141,58 @@ export const Table = ({ data }: Props) => {
           </table>
         </div>
       </div>
+
+      {/* Mobile Cards */}
+      <div className={styles.mobileCards}>
+        {table.getRowModel().rows.map((row) => (
+          <div
+            key={row.id}
+            className={styles.mobileCard}
+            onClick={() => {
+              setDrawerContent(row.original);
+              setIsDrawerOpen(true);
+            }}
+          >
+            <div className={styles.mobileCardHeader}>
+              <div className={styles.mobileCardCustomer}>
+                <div className={styles.customer}>{row.original.customer}</div>
+                <div className={styles.mobileCardEmail}>
+                  {row.original.email}
+                </div>
+              </div>
+              <div className={styles.mobileCardStatus}>
+                <Status status={row.original.status} />
+              </div>
+            </div>
+            <div className={styles.mobileCardDetails}>
+              <div className={styles.mobileCardRow}>
+                <span className={styles.mobileCardLabel}>Date</span>
+                <span className={styles.mobileCardValue}>
+                  {row.original.date}
+                </span>
+              </div>
+              <div className={styles.mobileCardRow}>
+                <span className={styles.mobileCardLabel}>Product</span>
+                <span className={styles.mobileCardValue}>
+                  {row.original.product}
+                </span>
+              </div>
+              <div className={styles.mobileCardRow}>
+                <span className={styles.mobileCardLabel}>Amount</span>
+                <span className={styles.mobileCardAmount}>
+                  {row.original.amount}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Drawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        transaction={transactionForDrawer}
+      />
     </div>
   );
 };

@@ -75,3 +75,121 @@
   font-weight: var(--font-weight-bold);
   font-size: var(--body2);
 }
+
+.mobileCards {
+  display: none;
+}
+
+/* Tablet and Mobile Responsive Styles */
+@media (max-width: 1280px) {
+  .tableContainer {
+    margin: 16px 0 0 0;
+    padding: 16px;
+    height: auto;
+    min-height: calc(100vh - 300px);
+  }
+
+  .tableContainer h2 {
+    font-size: var(--body1);
+    margin-bottom: 4px;
+  }
+
+  .tableContainer p {
+    font-size: var(--font-caption);
+    margin-bottom: 16px;
+  }
+
+  .tableWrapper {
+    display: none;
+  }
+
+  /* Show mobile cards and set up grid */
+  .mobileCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .mobileCard {
+    background: var(--neutral-gray-50);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid var(--neutral-gray-200);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobileCard:hover {
+    background: var(--neutral-gray-100);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobileCard:active {
+    transform: translateY(0);
+  }
+
+  .mobileCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .mobileCardCustomer {
+    flex: 1;
+  }
+
+  .mobileCardStatus {
+    flex-shrink: 0;
+  }
+
+  .mobileCardDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobileCardRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-caption);
+  }
+
+  .mobileCardLabel {
+    color: var(--neutral-gray-600);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .mobileCardValue {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .mobileCardAmount {
+    font-size: var(--body1);
+    font-weight: var(--font-weight-bold);
+    color: var(--custom2-main);
+  }
+
+  .mobileCardEmail {
+    font-size: var(--font-caption);
+    color: var(--neutral-gray-600);
+    margin-top: 4px;
+  }
+}
+
+/* Mobile-only overrides */
+@media (max-width: 1024px) {
+  .mobileCards {
+    grid-template-columns: 1fr 1fr; /* Single column on mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileCards {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+}
