@@ -42,7 +42,7 @@ const Card: React.FC<CardProps> = ({ title, amount, today, result }) => {
   };
 
   return (
-    <div className={clsx(styles.card, getBorderClass())}>
+    <div className={clsx(styles.card, getBorderClass())} tabIndex={0}>
       <div className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
         <div className={clsx(styles.arrow, isPositive && styles.arrowUp)}>
