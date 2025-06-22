@@ -174,6 +174,12 @@ export const Table = ({ data }: Props) => {
             className={styles.mobileCard}
             tabIndex={0}
             onFocus={(e) => handleRowFocus(e.currentTarget)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setDrawerContent(row.original);
+                setIsDrawerOpen(true);
+              }
+            }}
             onClick={() => {
               setDrawerContent(row.original);
               setIsDrawerOpen(true);
