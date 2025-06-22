@@ -6,6 +6,7 @@ import {
   getSortedRowModel,
   SortingState,
   useReactTable,
+  Column,
 } from "@tanstack/react-table";
 import styles from "./table.module.css";
 import { Status } from "../status/status";
@@ -27,9 +28,40 @@ type Props = {
   data: ProductProps[];
 };
 
+// Componente reutilizable para headers con flechas de ordenamiento
+const SortableHeader = ({
+  column,
+  children,
+  alignRight,
+}: {
+  column: Column<ProductProps>;
+  children: React.ReactNode;
+  alignRight?: boolean;
+}) => (
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "4px",
+      justifyContent: alignRight ? "flex-end" : "flex-start",
+    }}
+  >
+    {children}
+    <span className={styles.sortArrow}>
+      {column.getIsSorted() === "asc"
+        ? "▲"
+        : column.getIsSorted() === "desc"
+        ? "▼"
+        : ""}
+    </span>
+  </div>
+);
+
 const defaultColumns: ColumnDef<ProductProps>[] = [
   {
-    header: "Customer",
+    header: ({ column }) => (
+      <SortableHeader column={column}>Customer</SortableHeader>
+    ),
     accessorKey: "customer",
     cell: ({ row }) => (
       <div>
@@ -39,20 +71,30 @@ const defaultColumns: ColumnDef<ProductProps>[] = [
     ),
   },
   {
-    header: "Date",
+    header: ({ column }) => (
+      <SortableHeader column={column}>Date</SortableHeader>
+    ),
     accessorKey: "date",
   },
   {
-    header: "Product",
+    header: ({ column }) => (
+      <SortableHeader column={column}>Product</SortableHeader>
+    ),
     accessorKey: "product",
   },
   {
-    header: "Status",
+    header: ({ column }) => (
+      <SortableHeader column={column}>Status</SortableHeader>
+    ),
     accessorKey: "status",
     cell: ({ row }) => <Status status={row.original.status} />,
   },
   {
-    header: "Amount",
+    header: ({ column }) => (
+      <SortableHeader alignRight column={column}>
+        Amount
+      </SortableHeader>
+    ),
     accessorKey: "amount",
     cell: ({ row }) => (
       <div className={styles.amount}>{row.original.amount}</div>
@@ -66,7 +108,9 @@ export const Table = ({ data }: Props) => {
   const [drawerContent, setDrawerContent] = React.useState<ProductProps | null>(
     null
   );
-  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [sorting, setSorting] = React.useState<SortingState>([
+    { id: "date", desc: false },
+  ]);
   const [focusedRowRef, setFocusedRowRef] = React.useState<HTMLElement | null>(
     null
   );

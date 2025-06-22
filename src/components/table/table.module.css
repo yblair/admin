@@ -63,10 +63,19 @@
   text-align: left;
   padding: 24px 0px 9px 0px;
   border-bottom: 1px solid var(--neutral-gray-200);
+  cursor: pointer;
+  user-select: none;
 }
 
 .tableTitle:last-child {
   text-align: right;
+}
+
+.sortArrow {
+  font-size: 10px;
+  color: var(--custom2-main);
+  margin-left: 4px;
+  transition: transform 0.2s ease;
 }
 
 .email {
