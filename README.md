@@ -1,5 +1,7 @@
 # Documentación del Challenge
 
+**Challenge a resolver:** [Challenge](DOCS.md)
+
 Dado que se trataba de un proyecto ya parcialmente iniciado, se decidió continuar utilizando **CSS Modules** para respetar el estándar del código existente y poder reutilizar estilos previamente definidos sin modificaciones innecesarias.
 
 ## Observaciones relevantes
