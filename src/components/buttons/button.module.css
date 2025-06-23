@@ -7,7 +7,7 @@
   cursor: pointer;
   text-align: center;
   transition: opacity 0.2s;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 }
 
 .button:hover:not(:disabled) {
@@ -17,7 +17,7 @@
 .reject {
   background-color: transparent;
   color: var(--error);
-  border-color: var(--color-status-error);
+  border-color: var(--error);
 }
 
 .cancel {
