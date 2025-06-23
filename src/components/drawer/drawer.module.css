@@ -17,7 +17,7 @@
   animation: slideInFromRight 0.3s ease-out forwards;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid var(--color-border);
+  border-left: 1px solid var(--neutral-gray-200);
 }
 
 .closeButton {
@@ -27,7 +27,8 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--color-text-tertiary);
+  color: var(--neutral-gray-900);
+  background-color: transparent;
   border-radius: 50%;
   width: max-content;
   display: flex;
@@ -38,8 +39,9 @@
 }
 
 .closeButton:hover {
-  transition: all 0.2s ease;
-  background-color: var(--neutral-gray-100);
+  transition: all 0.3s ease;
+  background-color: var(--neutral-gray-200);
+  color: var(--neutral-gray-900);
 }
 
 .closeButtonIcon {
@@ -86,7 +88,7 @@
 
 .details {
   flex-grow: 1;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--neutral-gray-200);
   padding-top: 12px;
 }
 
@@ -95,7 +97,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
-  font-size: var(--body2);
+  font-size: var(--font-body2);
   border-bottom: 1px solid var(--neutral-gray-200);
 }
 
