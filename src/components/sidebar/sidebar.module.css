@@ -14,12 +14,6 @@
   }
 }
 
-@media (max-width: 400px) {
-  .sidebar {
-    padding-right: 0.2rem;
-  }
-}
-
 .inactive,
 .active {
   margin-bottom: 0.5rem;
@@ -104,5 +98,11 @@
 @media (max-width: 1024px) {
   .sidebar button {
     display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    padding-right: 0.2rem;
   }
 }

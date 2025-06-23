@@ -105,11 +105,13 @@
 
 .detailLabel {
   color: var(--custom2-main);
+  font-size: var(--font-body2);
 }
 
 .detailValue {
   color: var(--neutral-gray-600);
   font-weight: var(--font-weight-medium);
+  font-size: var(--font-body2);
 }
 
 .actions {

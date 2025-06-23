@@ -7,13 +7,6 @@
   min-width: 200px;
 }
 
-@media (max-width: 768px) {
-  .card {
-    min-width: 100%;
-    padding: 16px;
-  }
-}
-
 .borderSuccess {
   border-color: var(--success);
 }
@@ -91,4 +84,11 @@
 
 .today.negative {
   color: var(--error);
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-width: 100%;
+    padding: 16px;
+  }
 }
