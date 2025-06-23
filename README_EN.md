@@ -9,7 +9,7 @@ Since this was a partially initiated project, it was decided to continue using *
 
 - Regarding SVG icons, it was decided to import all of them from the [Heroicons](https://heroicons.com/) library to maintain design consistency. This decision was made considering that the project already included some imports from that library, so the priority was to unify the approach and reduce potential code duplication.
 
----
+## -The "X" button on the drawer could present contrast issues in certain cases, as it is positioned over an image whose colors are not controllable. To address this issue, a background color was added to the button to ensure better visibility regardless of the underlying image.
 
 ## Development Stages
 

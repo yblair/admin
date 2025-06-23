@@ -9,7 +9,7 @@ Dado que se trataba de un proyecto ya parcialmente iniciado, se decidió continu
 
 - En cuanto a los íconos SVG, se optó por importar todos desde la librería [Heroicons](https://heroicons.com/) para mantener coherencia en el diseño y evitar inconsistencias. Esta decisión se tomó considerando que el proyecto ya contaba con algunos import desde dicha librería, por lo que se priorizó unificar el criterio y reducir posibles duplicaciones de código.
 
----
+- El botón "X" del drawer podría presentar problemas de contraste visual en ciertos casos, ya que se superpone a una imagen cuyo color no es controlable. Para resolver este inconveniente, se decidió agregar un color de fondo al botón, garantizando así una mejor visibilidad independientemente de la imagen de fondo.
 
 ## Etapas del desarrollo
 
