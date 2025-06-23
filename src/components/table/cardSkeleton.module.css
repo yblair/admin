@@ -1,7 +1,7 @@
 .mobileCardSkeleton {
   background: var(--neutral-gray-50);
   border-radius: 12px;
-  padding: 16px;
+  padding: 6px;
   min-width: 0;
   min-height: 120px;
   display: flex;
@@ -15,7 +15,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .mobileCardCustomer {
@@ -37,18 +37,18 @@
 }
 
 .skeletonEmail {
-  width: 110px;
+  width: 100px;
   height: 10px;
 }
 
 .skeletonStatus {
-  width: 70px;
+  width: 40px;
   height: 24px;
   border-radius: 12px;
   background: var(--skeleton-gradient);
   background-size: 200% 100%;
   animation: shimmer 1.2s infinite linear;
-  margin-left: 8px;
+  margin-left: 4px;
 }
 
 .mobileCardDetails {

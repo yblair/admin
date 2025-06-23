@@ -1,46 +1,64 @@
-# UX Developer Sr. Challenge
+# Documentación del Challenge
 
-## The Challenge
+Dado que se trataba de un proyecto ya parcialmente iniciado, se decidió continuar utilizando **CSS Modules** para respetar el estándar del código existente y poder reutilizar estilos previamente definidos sin modificaciones innecesarias.
 
-The client has requested that you build an Admin Dashboard view to track the latest transactions in sales and revenue. You can find the Figma file with the various views and flows [here](https://www.figma.com/design/JF8Kajh77NRzE1ojlyWs62/UX-Dev-Challenge-SR).
+## Observaciones relevantes
 
-Please deliver a complete experience using React. If you are familiar with type-checking tools like TypeScript or PropTypes, feel free to use them. You may also use a CSS-in-JS library (such as Emotion or Styled Components), SASS, or plain CSS.
+- La variable `--primary-text-contrast`, utilizada como color de fuente en las _cards_ del _home_, presentaba el mismo valor tanto en modo claro como en modo oscuro, lo que generaba un bajo contraste en este último.  
+  Se dejó un comentario en el archivo `theme.css` con una sugerencia de valor más adecuado para el modo oscuro.
 
-All views must be responsive and display correctly on Desktop, Tablet, and Mobile. You will only receive a desktop mockup. On mobile, the user should be able to see as much information as possible on the screen while maintaining design coherence.
+- En cuanto a los íconos SVG, se optó por importar todos desde la librería [Heroicons](https://heroicons.com/) para mantener coherencia en el diseño y evitar inconsistencias. Esta decisión se tomó considerando que el proyecto ya contaba con algunos import desde dicha librería, por lo que se priorizó unificar el criterio y reducir posibles duplicaciones de código.
 
-### User Requirements
+---
 
-Your users should be able to:
+## Etapas del desarrollo
 
-- Switch between dark and light modes
-- View the optimal layout based on their device's screen size
-- See hover and focus states for all interactive elements on the page
-- Access more information about a specific transaction through a drawer, and if the transaction selected is Pending has to be the ability to Approve or Reject the transaction itself with a modal to confirm your action
-- Search in the input and find the transaction mocked by the `User` if is not any value display an `EmptyState`
-- Access to the `SideBar` in the normal or collapsable view, also can access to the `Messages` section with the correct EmptyState
-- View the `EmptyState` of the `Order` Tab and ability to switch between tabs
+El desarrollo se abordó en distintas etapas para asegurar orden, calidad visual y funcionalidad del proyecto:
 
-### Documentation and Delivery
+1. **Reparación**  
+   Validación del CSS ya implementado. Se ajustaron clases y estilos para que los componentes existentes se alineen con el diseño en Figma.
 
-Upon delivery, please provide clear explanations of your decision-making process regarding the responsive design. Make sure to document your code as thoroughly as possible.
+2. **Creación**  
+   Desarrollo de los componentes faltantes siguiendo las guías de estilo y estructura del diseño.
 
-## Where to Find Everything
+3. **Primera revisión de QA**  
+   Verificación de variables CSS y comportamiento general de los componentes.
 
-On the `Platform` page, you will find the `Dashboard` with the `Drawer` interaction and the empty state of the Order Tab.
+4. **Responsive**  
+   Implementación del diseño responsivo para asegurar una correcta visualización en diferentes tamaños de pantalla.
 
-On the `Component` page, you will find the specific components, and in the `Foundation` section, you will see the color palette of the light and dark mode.
+5. **Segunda revisión de QA**  
+   Validación del diseño en múltiples dispositivos y navegadores. Se registraron errores en caso de haberlos.
 
-## Some Tips
+6. **Detalles**  
+   Ajustes visuales y funcionales derivados de QA. En esta instancia se agregaron efectos o animaciones menores que aportan a la experiencia del usuario.
 
-1. Review the designs to start planning how to approach the project. This step is essential for organizing your CSS and components to enhance reusability.
-2. You can include any additional elements you consider necessary to support your solution.
-3. Pay close attention to detail.
-4. Remember that while JavaScript logic is still important, our main focus for this exercise is on styles and components and not paying attention to the business logic and the router. You can hard-code the data provided in `content.txt` into your components.
-5. Since we emphasize styles, please refrain from using Tailwind.
-6. Include all necessary accessibility labels to ensure all users can access the platform.
+7. **Accesibilidad**  
+   Revisión del código orientada a mejoras en accesibilidad, priorizando buenas prácticas de SEO y legibilidad del contenido.
 
-## Deliverables
+8. **Testeo de SEO**  
+   Evaluación del rendimiento SEO utilizando Lighthouse.
 
-- Complete project files that work on Chrome, Safari, Firefox, and Edge, along with project documentation. Please deliver everything through a GitHub repository.
+9. **Deploy (Plus)**  
+   Despliegue del proyecto en Netlify para visualización en entorno de producción.
 
-**Have fun building!**
+10. **Entrega**  
+    Documentación final y entrega del proyecto completo.
+
+## Cómo correr el proyecto localmente
+
+Para ejecutar el proyecto en entorno local:
+
+1. Abrí la terminal y posicionate en la raíz del proyecto.
+2. Ejecutá los siguientes comandos:
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+## Sitio desplegado
+
+Podés visualizar el sitio en producción en el siguiente enlace:
+
+🔗 https://ylair-admin.netlify.app/

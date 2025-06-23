@@ -57,6 +57,8 @@
   border-top: thin solid var(--neutral-gray-300);
   color: var(--custom2-main);
   transition: all 0.25s ease-in-out;
+  position: fixed;
+  bottom: 20px;
 }
 
 .sidebar button svg {
