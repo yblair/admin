@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 250px;
   background: var(--neutral-gray-50);
   border: 1px solid var(--neutral-gray-300);
   border-radius: 12px;
@@ -82,7 +82,8 @@
 
 @media (max-width: 768px) {
   .searchContainer {
-    max-width: 100%;
+    max-width: 250px;
+    width: 100%;
     padding: 10px 14px;
   }
 

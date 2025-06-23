@@ -119,7 +119,7 @@ th {
 
 @media (max-width: 1280px) {
   .tableContainer {
-    margin: 16px 0 0 0;
+    margin: 0;
     padding: 16px;
     height: auto;
     min-height: calc(100vh - 300px);
@@ -132,7 +132,6 @@ th {
 
   .tableContainer p {
     font-size: var(--font-caption);
-    margin-bottom: 16px;
   }
 
   .tableWrapper {
@@ -220,11 +219,23 @@ th {
   .mobileCards {
     grid-template-columns: 1fr 1fr;
   }
+
+  .tableContainerHeader {
+    margin: 0px;
+    align-items: center;
+  }
 }
 
 @media (max-width: 768px) {
   .mobileCards {
     grid-template-columns: 1fr;
+  }
+  .tableContainerHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tableContainer p {
+    margin-bottom: 16px;
   }
 }
 

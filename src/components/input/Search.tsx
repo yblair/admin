@@ -24,7 +24,7 @@ export const Search: React.FC<SearchProps> = ({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className={styles.searchInput}
-        aria-label="Search customers"
+        aria-label="Search by customers"
       />
       {value && (
         <button
