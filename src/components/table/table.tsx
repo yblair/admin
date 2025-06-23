@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import {
   ColumnDef,
   flexRender,
@@ -30,24 +30,14 @@ type Props = {
   data: ProductProps[];
 };
 
-// Componente reutilizable para headers con flechas de ordenamiento
 const SortableHeader = ({
   column,
   children,
-  alignRight,
 }: {
   column: Column<ProductProps>;
   children: React.ReactNode;
-  alignRight?: boolean;
 }) => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: "4px",
-      justifyContent: alignRight ? "flex-end" : "flex-start",
-    }}
-  >
+  <div>
     {children}
     <span className={styles.sortArrow}>
       {column.getIsSorted() === "asc"
@@ -93,9 +83,7 @@ const defaultColumns: ColumnDef<ProductProps>[] = [
   },
   {
     header: ({ column }) => (
-      <SortableHeader alignRight column={column}>
-        Amount
-      </SortableHeader>
+      <SortableHeader column={column}>Amount</SortableHeader>
     ),
     accessorKey: "amount",
     cell: ({ row }) => (
@@ -105,20 +93,16 @@ const defaultColumns: ColumnDef<ProductProps>[] = [
 ];
 
 export const Table = ({ data }: Props) => {
-  const [columns] = React.useState(() => [...defaultColumns]);
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  const [drawerContent, setDrawerContent] = React.useState<ProductProps | null>(
-    null
-  );
-  const [sorting, setSorting] = React.useState<SortingState>([
+  const [columns] = useState(() => [...defaultColumns]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerContent, setDrawerContent] = useState<ProductProps | null>(null);
+  const [sorting, setSorting] = useState<SortingState>([
     { id: "date", desc: false },
   ]);
-  const [focusedRowRef, setFocusedRowRef] = React.useState<HTMLElement | null>(
-    null
-  );
-  const [searchTerm, setSearchTerm] = React.useState("");
+  const [focusedRowRef, setFocusedRowRef] = useState<HTMLElement | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredData = React.useMemo(() => {
+  const filteredData = useMemo(() => {
     if (!searchTerm.trim()) return data;
 
     return data.filter((item) =>

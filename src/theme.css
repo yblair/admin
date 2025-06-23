@@ -43,7 +43,6 @@ html {
     --neutral-gray-800: hsla(0, 0%, 88%, 1);
     --neutral-gray-900: hsla(0, 0%, 93%, 1);
 
-    /*  --custom2-main: hsla(0, 0%, 88%, 1);  */
     --custom2-main: hsla(203, 75%, 74%, 1);
     --custom2-light: hsla(199, 81%, 84%, 1);
 
@@ -54,12 +53,8 @@ html {
     --success-text-contrast: hsla(90, 6%, 7%, 1);
     --error-text-contrast: hsla(0, 0%, 0%, 1);
 
-    --primary-text-contrast: hsla(
-      0,
-      0%,
-      98%,
-      1
-    ); /* valor sugerido por el desarrollador */
+    /* valor sugerido por la desarrolladora */
+    --primary-text-contrast: hsla(0, 0%, 98%, 1);
     --custom2-text-contrast: hsla(0, 0%, 0%, 1);
 
     --shadow: hsla(0, 0%, 0%, 0.5);

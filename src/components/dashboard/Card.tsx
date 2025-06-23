@@ -16,8 +16,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, amount, today, result }) => {
   const isPositive = result === POSITIVE;
-  const displayAmount =
-    amount !== undefined && amount !== null && amount !== "" ? amount : "-";
+  const displayAmount = amount || "-";
   const isNegative = result === NEGATIVE;
 
   const getBorderClass = () => {
