@@ -1,5 +1,5 @@
 import { ProductProps, Table } from "../components/table/table";
-import Card from "../components/dashboard/Card";
+import Card from "../components/card/Card";
 import data from "../data/data.json";
 import styles from "./root.module.css";
 import EmptyState from "../components/emptyState/EmptyState";

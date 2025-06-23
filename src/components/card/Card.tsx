@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./card.module.css";
 import clsx from "clsx";
 import { POSITIVE, NEGATIVE } from "../../constants/values";
@@ -6,6 +6,7 @@ import {
   ArrowTrendingUpIcon,
   ArrowTrendingDownIcon,
 } from "@heroicons/react/24/outline";
+import CardSkeleton from "./cardSkeleton";
 
 interface CardProps {
   title: string;
@@ -15,6 +16,13 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ title, amount, today, result }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const isPositive = result === POSITIVE;
   const displayAmount = amount || "-";
   const isNegative = result === NEGATIVE;
@@ -39,6 +47,8 @@ const Card: React.FC<CardProps> = ({ title, amount, today, result }) => {
       return styles.borderGrey;
     }
   };
+
+  if (loading) return <CardSkeleton />;
 
   return (
     <div className={clsx(styles.card, getBorderClass())} tabIndex={0}>

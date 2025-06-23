@@ -75,6 +75,13 @@ html {
   --font-weight-bold: 700;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
+
+  --skeleton-gradient: linear-gradient(
+    90deg,
+    var(--neutral-gray-200) 25%,
+    var(--neutral-gray-50) 50%,
+    var(--neutral-gray-200) 75%
+  );
 }
 
 @media (max-width: 768px) {

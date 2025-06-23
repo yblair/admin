@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   ColumnDef,
   flexRender,
@@ -14,6 +14,8 @@ import Drawer from "../drawer/drawer";
 import { Search } from "../input/Search";
 import type { Status as StatusType } from "../../constants/status";
 import EmptyState from "../emptyState/EmptyState";
+
+import TableSkeleton from "./tableSkeleton";
 
 export type ProductProps = {
   id: number;
@@ -101,6 +103,12 @@ export const Table = ({ data }: Props) => {
   ]);
   const [focusedRowRef, setFocusedRowRef] = useState<HTMLElement | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredData = useMemo(() => {
     if (!searchTerm.trim()) return data;
@@ -210,14 +218,18 @@ export const Table = ({ data }: Props) => {
                       setIsDrawerOpen(true);
                     }}
                   >
-                    {row.getVisibleCells().map((cell) => (
-                      <td key={cell.id} className={styles.tableRow}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
-                    ))}
+                    {loading ? (
+                      <TableSkeleton />
+                    ) : (
+                      row.getVisibleCells().map((cell) => (
+                        <td key={cell.id} className={styles.tableRow}>
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </td>
+                      ))
+                    )}
                   </tr>
                 ))}
               </tbody>
