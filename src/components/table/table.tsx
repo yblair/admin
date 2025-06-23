@@ -11,7 +11,9 @@ import {
 import styles from "./table.module.css";
 import { Status } from "../status/status";
 import Drawer from "../drawer/drawer";
+import { Search } from "../input/Search";
 import type { Status as StatusType } from "../../constants/status";
+import EmptyState from "../emptyState/EmptyState";
 
 export type ProductProps = {
   id: number;
@@ -114,9 +116,18 @@ export const Table = ({ data }: Props) => {
   const [focusedRowRef, setFocusedRowRef] = React.useState<HTMLElement | null>(
     null
   );
+  const [searchTerm, setSearchTerm] = React.useState("");
+
+  const filteredData = React.useMemo(() => {
+    if (!searchTerm.trim()) return data;
+
+    return data.filter((item) =>
+      item.customer.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [data, searchTerm]);
 
   const table = useReactTable({
-    data,
+    data: filteredData,
     columns,
     state: {
       sorting,
@@ -124,6 +135,7 @@ export const Table = ({ data }: Props) => {
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
+    enableSorting: true,
   });
 
   const transactionForDrawer = drawerContent
@@ -148,121 +160,143 @@ export const Table = ({ data }: Props) => {
 
   return (
     <div className={styles.tableContainer}>
-      <h2>Transactions</h2>
-      <p>Recent transactions from your store.</p>
+      <div className={styles.tableContainerHeader}>
+        <div className={styles.tableContainerHeaderLeft}>
+          <h2>Transactions</h2>
+          <p>Recent transactions from your store.</p>
+        </div>
+        <Search value={searchTerm} onChange={setSearchTerm} />
+      </div>
 
-      {/* Desktop Table */}
-      <div className={styles.tableWrapper}>
-        <table className={styles.table}>
-          <thead className={styles.tableHeader}>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    colSpan={header.colSpan}
-                    onClick={header.column.getToggleSortingHandler()}
-                    className={styles.tableTitle}
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </th>
+      {filteredData.length === 0 && searchTerm.trim() !== "" ? (
+        <EmptyState
+          title="No customers found"
+          description={`No customers match "${searchTerm}". Try adjusting your search terms.`}
+        />
+      ) : (
+        <>
+          {/* Desktop Table */}
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <thead className={styles.tableHeader}>
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <tr key={headerGroup.id}>
+                    {headerGroup.headers.map((header) => (
+                      <th
+                        key={header.id}
+                        colSpan={header.colSpan}
+                        onClick={header.column.getToggleSortingHandler()}
+                        className={styles.tableTitle}
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            const toggleHandler =
+                              header.column.getToggleSortingHandler();
+                            if (toggleHandler) {
+                              toggleHandler(e);
+                            }
+                          }
+                        }}
+                      >
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </th>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
-            ))}
-          </thead>
-        </table>
-        <div className={styles.tableBody} tabIndex={0}>
-          <table className={styles.table}>
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr
-                  key={row.id}
-                  tabIndex={0}
-                  onFocus={(e) => handleRowFocus(e.currentTarget)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
+              </thead>
+              <tbody className={styles.tableBody} tabIndex={0}>
+                {table.getRowModel().rows.map((row) => (
+                  <tr
+                    key={row.id}
+                    tabIndex={0}
+                    onFocus={(e) => handleRowFocus(e.currentTarget)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        setDrawerContent(row.original);
+                        setIsDrawerOpen(true);
+                      }
+                    }}
+                    onClick={() => {
                       setDrawerContent(row.original);
                       setIsDrawerOpen(true);
-                    }
-                  }}
-                  onClick={() => {
+                    }}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <td key={cell.id} className={styles.tableRow}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile Cards */}
+          <div className={styles.mobileCards}>
+            {table.getRowModel().rows.map((row) => (
+              <div
+                key={row.id}
+                className={styles.mobileCard}
+                tabIndex={0}
+                onFocus={(e) => handleRowFocus(e.currentTarget)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
                     setDrawerContent(row.original);
                     setIsDrawerOpen(true);
-                  }}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className={styles.tableRow}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Mobile Cards */}
-      <div className={styles.mobileCards}>
-        {table.getRowModel().rows.map((row) => (
-          <div
-            key={row.id}
-            className={styles.mobileCard}
-            tabIndex={0}
-            onFocus={(e) => handleRowFocus(e.currentTarget)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                setDrawerContent(row.original);
-                setIsDrawerOpen(true);
-              }
-            }}
-            onClick={() => {
-              setDrawerContent(row.original);
-              setIsDrawerOpen(true);
-            }}
-          >
-            <div className={styles.mobileCardHeader}>
-              <div className={styles.mobileCardCustomer}>
-                <div className={styles.customer}>{row.original.customer}</div>
-                <div className={styles.mobileCardEmail}>
-                  {row.original.email}
+                  }
+                }}
+                onClick={() => {
+                  setDrawerContent(row.original);
+                  setIsDrawerOpen(true);
+                }}
+              >
+                <div className={styles.mobileCardHeader}>
+                  <div className={styles.mobileCardCustomer}>
+                    <div className={styles.customer}>
+                      {row.original.customer}
+                    </div>
+                    <div className={styles.mobileCardEmail}>
+                      {row.original.email}
+                    </div>
+                  </div>
+                  <div className={styles.mobileCardStatus}>
+                    <Status status={row.original.status} />
+                  </div>
+                </div>
+                <div className={styles.mobileCardDetails}>
+                  <div className={styles.mobileCardRow}>
+                    <span className={styles.mobileCardLabel}>Date</span>
+                    <span className={styles.mobileCardValue}>
+                      {row.original.date}
+                    </span>
+                  </div>
+                  <div className={styles.mobileCardRow}>
+                    <span className={styles.mobileCardLabel}>Product</span>
+                    <span className={styles.mobileCardValue}>
+                      {row.original.product}
+                    </span>
+                  </div>
+                  <div className={styles.mobileCardRow}>
+                    <span className={styles.mobileCardLabel}>Amount</span>
+                    <span className={styles.mobileCardAmount}>
+                      {row.original.amount}
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className={styles.mobileCardStatus}>
-                <Status status={row.original.status} />
-              </div>
-            </div>
-            <div className={styles.mobileCardDetails}>
-              <div className={styles.mobileCardRow}>
-                <span className={styles.mobileCardLabel}>Date</span>
-                <span className={styles.mobileCardValue}>
-                  {row.original.date}
-                </span>
-              </div>
-              <div className={styles.mobileCardRow}>
-                <span className={styles.mobileCardLabel}>Product</span>
-                <span className={styles.mobileCardValue}>
-                  {row.original.product}
-                </span>
-              </div>
-              <div className={styles.mobileCardRow}>
-                <span className={styles.mobileCardLabel}>Amount</span>
-                <span className={styles.mobileCardAmount}>
-                  {row.original.amount}
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
 
       <Drawer
         isOpen={isDrawerOpen}

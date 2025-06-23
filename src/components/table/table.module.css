@@ -10,6 +10,19 @@
   width: 100%;
 }
 
+.tableContainerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 24px 24px 0px;
+}
+
+.tableContainerHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .table {
   width: 100%;
   border-spacing: 0;
@@ -19,7 +32,7 @@
 
 .tableWrapper {
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -29,16 +42,15 @@
 }
 
 .tableBody {
-  flex: 1;
   height: 100%;
+  width: 100%;
   overflow-y: auto;
-  display: block;
+  border-spacing: 0;
+  table-layout: fixed;
+  padding-right: 24px;
 }
 
 .tableBody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
   border-bottom: 1px solid var(--neutral-gray-200);
   cursor: pointer;
 }
@@ -50,10 +62,19 @@
 
 .tableRow {
   height: 63px;
+  border-bottom: 1px solid var(--neutral-gray-200);
 }
 
 .tableRow:last-child {
   text-align: right;
+}
+
+.tableTitle,
+th {
+  position: sticky;
+  top: 0;
+  background: var(--neutral-gray-50);
+  z-index: 2;
 }
 
 .tableTitle {
