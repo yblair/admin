@@ -17,6 +17,14 @@
   height: 10px;
 }
 
+.cardSkeleton {
+  width: 100%;
+  height: 120px;
+  background: var(--skeleton-gradient);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite linear;
+}
+
 @keyframes shimmer {
   0% {
     background-position: 200% 0;

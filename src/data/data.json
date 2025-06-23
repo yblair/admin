@@ -116,7 +116,7 @@
       "date": "Oct 01, 2024 19:25",
       "product": "Running shoes",
       "status": "Approved",
-      "email": "d.wilson@example.com",
+      "email": "d.wilson.superlongemail@example.com",
       "amount": "$79.95",
       "paymentMethod": "AMEX ****4567"
     },

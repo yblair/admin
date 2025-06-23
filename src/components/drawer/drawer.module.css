@@ -73,8 +73,15 @@
 .subtitle {
   font-size: var(--font-subtitle1);
   color: var(--custom2-light);
-  margin-bottom: 24px;
   font-weight: var(--font-weight-regular);
+  margin-bottom: 0px !important;
+}
+
+.email {
+  font-size: var(--font-caption);
+  color: var(--custom2-light);
+  font-weight: var(--font-weight-regular);
+  margin-bottom: 24px;
 }
 
 .details {

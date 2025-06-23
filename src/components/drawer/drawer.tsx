@@ -91,6 +91,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, transaction }) => {
           <div className={styles.detailsContent}>
             <h2 className={styles.title}>{transaction.product}</h2>
             <p className={styles.subtitle}>{transaction.customer}</p>
+            <p className={styles.email}>{transaction.email}</p>
 
             <div className={styles.details}>
               <div className={styles.detailRow}>

@@ -1,14 +1,14 @@
-import stylesSkeleton from "./tableSkeleton.module.css";
+import styles from "./tableSkeleton.module.css";
 
 const TableSkeleton = () => {
   return (
-    <td className={stylesSkeleton.skeletonRow} colSpan={5}>
-      <div className={stylesSkeleton.skeletonContainer}>
-        <div className={stylesSkeleton.skeletonCell} />
-        <div className={stylesSkeleton.skeletonCell} />
-        <div className={stylesSkeleton.skeletonCell} />
-        <div className={stylesSkeleton.skeletonCell} />
-        <div className={stylesSkeleton.skeletonCell} />
+    <td className={styles.skeletonRow} colSpan={5}>
+      <div className={styles.skeletonContainer}>
+        <div className={styles.skeletonCell} />
+        <div className={styles.skeletonCell} />
+        <div className={styles.skeletonCell} />
+        <div className={styles.skeletonCell} />
+        <div className={styles.skeletonCell} />
       </div>
     </td>
   );

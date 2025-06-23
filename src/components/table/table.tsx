@@ -14,8 +14,9 @@ import Drawer from "../drawer/drawer";
 import { Search } from "../input/Search";
 import type { Status as StatusType } from "../../constants/status";
 import EmptyState from "../emptyState/EmptyState";
-
 import TableSkeleton from "./tableSkeleton";
+import TruncatedText from "../truncatedText/truncatedText";
+import CardSkeleton from "./cardSkeleton";
 
 export type ProductProps = {
   id: number;
@@ -60,7 +61,9 @@ const defaultColumns: ColumnDef<ProductProps>[] = [
     cell: ({ row }) => (
       <div>
         <div className={styles.customer}>{row.original.customer}</div>
-        <div className={styles.email}>{row.original.email}</div>
+        <div className={styles.email}>
+          <TruncatedText text={row.original.email} />
+        </div>
       </div>
     ),
   },
@@ -106,7 +109,7 @@ export const Table = ({ data }: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
+    const timer = setTimeout(() => setLoading(false), 1250);
     return () => clearTimeout(timer);
   }, []);
 
@@ -255,39 +258,46 @@ export const Table = ({ data }: Props) => {
                   setIsDrawerOpen(true);
                 }}
               >
-                <div className={styles.mobileCardHeader}>
-                  <div className={styles.mobileCardCustomer}>
-                    <div className={styles.customer}>
-                      {row.original.customer}
+                {loading ? (
+                  <CardSkeleton />
+                ) : (
+                  <>
+                    <div className={styles.mobileCardHeader}>
+                      <div className={styles.mobileCardCustomer}>
+                        <div className={styles.customer}>
+                          {row.original.customer}
+                        </div>
+                      </div>
+
+                      <div className={styles.mobileCardStatus}>
+                        <Status status={row.original.status} />
+                      </div>
                     </div>
                     <div className={styles.mobileCardEmail}>
-                      {row.original.email}
+                      <TruncatedText text={row.original.email} />
                     </div>
-                  </div>
-                  <div className={styles.mobileCardStatus}>
-                    <Status status={row.original.status} />
-                  </div>
-                </div>
-                <div className={styles.mobileCardDetails}>
-                  <div className={styles.mobileCardRow}>
-                    <span className={styles.mobileCardLabel}>Date</span>
-                    <span className={styles.mobileCardValue}>
-                      {row.original.date}
-                    </span>
-                  </div>
-                  <div className={styles.mobileCardRow}>
-                    <span className={styles.mobileCardLabel}>Product</span>
-                    <span className={styles.mobileCardValue}>
-                      {row.original.product}
-                    </span>
-                  </div>
-                  <div className={styles.mobileCardRow}>
-                    <span className={styles.mobileCardLabel}>Amount</span>
-                    <span className={styles.mobileCardAmount}>
-                      {row.original.amount}
-                    </span>
-                  </div>
-                </div>
+                    <div className={styles.mobileCardDetails}>
+                      <div className={styles.mobileCardRow}>
+                        <span className={styles.mobileCardLabel}>Date</span>
+                        <span className={styles.mobileCardValue}>
+                          {row.original.date}
+                        </span>
+                      </div>
+                      <div className={styles.mobileCardRow}>
+                        <span className={styles.mobileCardLabel}>Product</span>
+                        <span className={styles.mobileCardValue}>
+                          {row.original.product}
+                        </span>
+                      </div>
+                      <div className={styles.mobileCardRow}>
+                        <span className={styles.mobileCardLabel}>Amount</span>
+                        <span className={styles.mobileCardAmount}>
+                          {row.original.amount}
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
