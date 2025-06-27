@@ -13,8 +13,20 @@ export const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
 
-  const isHomeActive =
-    location.pathname === "/" || location.pathname.startsWith("/orders");
+  const navItems = [
+    {
+      label: "Home",
+      icon: <HomeIcon />,
+      to: "/",
+      matchPaths: ["/", "/orders"],
+    },
+    {
+      label: "Messages",
+      icon: <EnvelopeIcon />,
+      to: "/messages",
+      matchPaths: ["/messages"],
+    },
+  ];
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -29,31 +41,31 @@ export const Sidebar = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  const isRouteActive = (matchPaths: string[], currentPath: string) => {
+    return matchPaths.some((path) =>
+      path === "/" ? currentPath === "/" : currentPath.startsWith(path)
+    );
+  };
+
   return (
     <nav className={clsx(styles.sidebar, { [styles.collapsed]: collapsed })}>
       <ul>
-        <li>
-          <NavLink
-            to={`/`}
-            className={isHomeActive ? styles.active : styles.inactive}
-            aria-label="Home button"
-          >
-            <HomeIcon />
-            <span> Home</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`/messages`}
-            aria-label="Messages button"
-            className={({ isActive }) =>
-              isActive ? styles.active : styles.inactive
-            }
-          >
-            <EnvelopeIcon />
-            <span> Messages</span>
-          </NavLink>
-        </li>
+        {navItems.map((item) => (
+          <li key={item.label}>
+            <NavLink
+              to={item.to}
+              className={
+                isRouteActive(item.matchPaths, location.pathname)
+                  ? styles.active
+                  : styles.inactive
+              }
+              aria-label={`${item.label} button`}
+            >
+              {item.icon}
+              <span>{item.label}</span>
+            </NavLink>
+          </li>
+        ))}
       </ul>
       <button
         onClick={() => setCollapsed(!collapsed)}

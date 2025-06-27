@@ -48,9 +48,6 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, transaction }) => {
   };
 
   const handleConfirmAction = () => {
-    console.log(
-      `Action: ${actionType} confirmed for transaction: ${transaction.id}`
-    );
     setModalOpen(false);
     onClose();
   };
@@ -92,55 +89,55 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, transaction }) => {
             <h2 className={styles.title}>{transaction.product}</h2>
             <p className={styles.subtitle}>{transaction.customer}</p>
             <p className={styles.email}>{transaction.email}</p>
-
-            <div className={styles.details}>
-              <div className={styles.detailRow}>
-                <span className={styles.detailLabel}>Status:</span>
-                <Status status={transaction.status} />
-              </div>
-              <div className={styles.detailRow}>
-                <span className={styles.detailLabel}>Date:</span>
-                <span className={styles.detailValue}>
-                  {new Date(transaction.date).toLocaleString()}
-                </span>
-              </div>
-              <div className={styles.detailRow}>
-                <span className={styles.detailLabel}>Amount:</span>
-                <span className={styles.detailValue}>
-                  ${transaction.amount.toFixed(2)}
-                </span>
-              </div>
-              <div className={styles.detailRow}>
-                <span className={styles.detailLabel}>Payment method:</span>
-                <span className={styles.detailValue}>
-                  {transaction.paymentMethod}
-                </span>
-              </div>
-              <div className={styles.detailRow}>
-                <span className={styles.detailLabel}>Transaction ID:</span>
-                <span className={styles.detailValue}>#{transaction.id}</span>
-              </div>
-            </div>
-
-            {transaction.status === PENDING && (
-              <div className={styles.actions}>
-                <ActionButton
-                  type="reject"
-                  onClick={() => handleActionClick("reject")}
-                >
-                  REJECT
-                </ActionButton>
-                <ActionButton
-                  type="accept"
-                  onClick={() => handleActionClick("approve")}
-                >
-                  APPROVE
-                </ActionButton>
-              </div>
-            )}
           </div>
+          <div className={styles.details}>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Status:</span>
+              <Status status={transaction.status} isDrawer={true} />
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Date:</span>
+              <span className={styles.detailValue}>
+                {new Date(transaction.date).toLocaleString()}
+              </span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Amount:</span>
+              <span className={styles.detailValue}>
+                ${transaction.amount.toFixed(2)}
+              </span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Payment method:</span>
+              <span className={styles.detailValue}>
+                {transaction.paymentMethod}
+              </span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Transaction ID:</span>
+              <span className={styles.detailValue}>#{transaction.id}</span>
+            </div>
+          </div>
+
+          {transaction.status === PENDING && (
+            <div className={styles.actions}>
+              <ActionButton
+                type="reject"
+                onClick={() => handleActionClick("reject")}
+              >
+                REJECT
+              </ActionButton>
+              <ActionButton
+                type="accept"
+                onClick={() => handleActionClick("approve")}
+              >
+                APPROVE
+              </ActionButton>
+            </div>
+          )}
         </div>
       </div>
+
       {actionType && (
         <ConfirmationModal
           isOpen={isModalOpen}

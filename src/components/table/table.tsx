@@ -84,7 +84,7 @@ const defaultColumns: ColumnDef<ProductProps>[] = [
       <SortableHeader column={column}>Status</SortableHeader>
     ),
     accessorKey: "status",
-    cell: ({ row }) => <Status status={row.original.status} />,
+    cell: ({ row }) => <Status status={row.original.status} isDrawer={false} />,
   },
   {
     header: ({ column }) => (
@@ -270,7 +270,7 @@ export const Table = ({ data }: Props) => {
                       </div>
 
                       <div className={styles.mobileCardStatus}>
-                        <Status status={row.original.status} />
+                        <Status status={row.original.status} isDrawer={false} />
                       </div>
                     </div>
                     <div className={styles.mobileCardEmail}>

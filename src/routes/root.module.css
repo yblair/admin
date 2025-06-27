@@ -6,6 +6,7 @@
   padding: 24px;
   width: 100%;
 }
+
 .cardsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

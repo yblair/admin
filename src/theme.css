@@ -46,7 +46,7 @@ html {
     --custom2-main: hsla(203, 75%, 74%, 1);
     --custom2-light: hsla(199, 81%, 84%, 1);
 
-    --success: hsla(155, 87%, 43%, 1);
+    /*    --success: hsla(155, 87%, 43%, 1); */
     --warning: hsla(30, 100%, 69%, 1);
     --error: hsla(3, 96%, 72%, 1);
     --warning-text-contrast: hsla(0, 0%, 0%, 1);

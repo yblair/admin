@@ -23,9 +23,3 @@ main {
   background: var(--neutral-gray-300);
   border-radius: 8px;
 }
-
-@media (max-width: 1280px) {
-  main {
-    height: 100%;
-  }
-}

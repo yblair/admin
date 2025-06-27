@@ -5,10 +5,6 @@ const TableSkeleton = () => {
     <td className={styles.skeletonRow} colSpan={5}>
       <div className={styles.skeletonContainer}>
         <div className={styles.skeletonCell} />
-        <div className={styles.skeletonCell} />
-        <div className={styles.skeletonCell} />
-        <div className={styles.skeletonCell} />
-        <div className={styles.skeletonCell} />
       </div>
     </td>
   );

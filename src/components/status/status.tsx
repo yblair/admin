@@ -16,13 +16,27 @@ const getStatusStyles = (status: StatusType) => {
   });
 };
 
-export const Status = ({ status }: { status: StatusType }) => {
+export const Status = ({
+  status,
+  isDrawer,
+}: {
+  status: StatusType;
+  isDrawer?: boolean;
+}) => {
   return (
     <div className={getStatusStyles(status)}>
       {status === APPROVED && <CheckCircleIcon aria-hidden="true" />}
       {status === PENDING && <ExclamationTriangleIcon aria-hidden="true" />}
       {status === REJECTED && <XMarkIcon aria-hidden="true" />}
-      <p aria-hidden="true">{status}</p>
+      {isDrawer ? (
+        <p aria-hidden="true" className={styles.activeStatus}>
+          {status}
+        </p>
+      ) : (
+        <p aria-hidden="true" className={styles.statusText}>
+          {status}
+        </p>
+      )}
       <div className={styles.srOnly}>Status: {status}</div>
     </div>
   );
