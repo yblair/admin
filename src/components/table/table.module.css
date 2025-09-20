@@ -1,9 +1,9 @@
 .tableContainer {
   color: var(--neutral-gray-800);
-  margin: 24px 0 0px 0;
+  margin: 1.5rem 0 0px 0;
   border: 1px solid var(--neutral-gray-300);
-  border-radius: 24px;
-  padding: 24px 0px 0px 24px;
+  border-radius: 1.5rem;
+  padding: 1.5rem 0px 0px 1.5rem;
   height: calc(100vh - 400px);
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 24px 24px 0px;
+  margin: 0 1.5rem 1.5rem 0px;
 }
 
 .tableContainerHeaderLeft {
@@ -27,7 +27,7 @@
   width: 100%;
   border-spacing: 0;
   table-layout: fixed;
-  padding-right: 24px;
+  padding-right: 1.5rem;
 }
 
 .tableWrapper {
@@ -35,7 +35,7 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .tableHeader {
@@ -78,7 +78,7 @@ th {
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-align: left;
-  padding: 24px 0px 9px 0px;
+  padding: 1.5rem 0px 9px 0px;
   border-bottom: 1px solid var(--neutral-gray-200);
   cursor: pointer;
   user-select: none;
@@ -116,7 +116,7 @@ th {
 @media (max-width: 1280px) {
   .tableContainer {
     margin: 0;
-    padding: 16px;
+    padding: 1rem;
     height: auto;
     min-height: calc(100vh - 300px);
   }
@@ -137,14 +137,14 @@ th {
   .mobileCards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 16px;
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
   .mobileCard {
     background: var(--neutral-gray-50);
-    border-radius: 12px;
-    padding: 16px;
+    border-radius: 0.75rem;
+    padding: 1rem;
     border: 1px solid var(--neutral-gray-200);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -164,7 +164,7 @@ th {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 12px;
+    gap: 0.75rem;
     margin-bottom: 4px;
   }
 
@@ -212,7 +212,7 @@ th {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 101.5rem) {
   .mobileCards {
     grid-template-columns: 1fr 1fr;
   }
@@ -232,7 +232,7 @@ th {
     align-items: flex-start;
   }
   .tableContainer p {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 }
 

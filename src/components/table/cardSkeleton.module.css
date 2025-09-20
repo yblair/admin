@@ -1,12 +1,12 @@
 .mobileCardSkeleton {
   background: var(--neutral-gray-50);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   padding: 6px;
   min-width: 0;
-  min-height: 120px;
+  min-height: 11.25rem;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
+  gap: 0.75rem;
   margin-bottom: 4px;
 }
 
@@ -29,12 +29,12 @@
   background: var(--skeleton-gradient);
   background-size: 200% 100%;
   animation: shimmer 1.2s infinite linear;
-  border-radius: 16px;
+  border-radius: 1rem;
 }
 
 .skeletonName {
   width: 80px;
-  height: 14px;
+  height: 0.875rem;
 }
 
 .skeletonEmail {
@@ -44,8 +44,8 @@
 
 .skeletonStatus {
   width: 40px;
-  height: 24px;
-  border-radius: 16px;
+  height: 1.5rem;
+  border-radius: 1rem;
   background: var(--skeleton-gradient);
   background-size: 200% 100%;
   animation: shimmer 1.2s infinite linear;
@@ -77,8 +77,8 @@
 
 .skeletonAmount {
   width: 50px;
-  height: 14px;
-  border-radius: 16px;
+  height: 0.875rem;
+  border-radius: 1rem;
 }
 
 @keyframes shimmer {

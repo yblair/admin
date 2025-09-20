@@ -14,8 +14,8 @@ import Drawer from "../drawer/drawer";
 import { Search } from "../input/Search";
 import type { Status as StatusType } from "../../constants/status";
 import EmptyState from "../emptyState/EmptyState";
-import TableSkeleton from "./tableSkeleton";
 import TruncatedText from "../truncatedText/truncatedText";
+import TableSkeleton from "./tableSkeleton";
 import CardSkeleton from "./cardSkeleton";
 
 export type ProductProps = {
@@ -107,9 +107,8 @@ export const Table = ({ data }: Props) => {
   const [focusedRowRef, setFocusedRowRef] = useState<HTMLElement | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1250);
+    const timer = setTimeout(() => setLoading(false), 150);
     return () => clearTimeout(timer);
   }, []);
 

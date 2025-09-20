@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ title, amount, today, result }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1250);
+    const timer = setTimeout(() => setLoading(false), 150);
     return () => clearTimeout(timer);
   }, []);
 

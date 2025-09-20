@@ -6,12 +6,24 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <Link to={`/`} aria-label="Home button">
-        <img src="logo.png" alt="Home button" className={styles.img} />
+        <img
+          src="logo.png"
+          alt="Home button"
+          className={styles.img}
+          fetchPriority="high"
+          loading="eager"
+          decoding="sync"
+        />
       </Link>
       <div>
         <div className={styles.user}>
           <Toggle />
-          <img src="user.png" alt="user profile image" />
+          <img
+            src="user.png"
+            alt="user profile image"
+            loading="eager"
+            decoding="async"
+          />
           <p>Hi, {user}!</p>
         </div>
       </div>

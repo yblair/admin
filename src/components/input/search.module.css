@@ -6,8 +6,8 @@
   max-width: 250px;
   background: var(--neutral-gray-50);
   border: 1px solid var(--neutral-gray-300);
-  border-radius: 12px;
-  padding: 12px 16px;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
   transition: box-shadow 0.2s ease-in-out;
 }
 
@@ -20,14 +20,14 @@
 .searchIcon {
   display: flex;
   align-items: center;
-  margin-right: 12px;
+  margin-right: 0.75rem;
   color: var(--neutral-gray-500);
   flex-shrink: 0;
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   transition: color 0.2s ease-in-out;
 }
 
@@ -76,15 +76,15 @@
 }
 
 .clearIcon {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 
 @media (max-width: 768px) {
   .searchContainer {
     max-width: 250px;
     width: 100%;
-    padding: 10px 14px;
+    padding: 10px 0.875rem;
   }
 
   .searchInput {
@@ -92,12 +92,12 @@
   }
 
   .icon {
-    width: 18px;
-    height: 18px;
+    width: 1.125rem;
+    height: 1.125rem;
   }
 
   .clearIcon {
-    width: 14px;
-    height: 14px;
+    width: 0.875rem;
+    height: 0.875rem;
   }
 }

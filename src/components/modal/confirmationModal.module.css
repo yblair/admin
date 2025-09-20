@@ -11,30 +11,30 @@
 .modal {
   background-color: var(--neutral-gray-50);
   border: 1px solid var(--neutral-gray-300);
-  border-radius: 24px;
+  border-radius: 1.5rem;
   padding: 32px;
   width: 650px;
   max-width: 90%;
-  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 0px 1rem rgba(0, 0, 0, 0.07);
 }
 
 .title {
   font-size: var(--font-h5);
   font-weight: var(--font-weight-bold);
   color: var(--neutral-gray-800);
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .description {
   font-size: var(--body1);
   color: var(--neutral-gray-800);
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .productInfo {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
   margin-bottom: 32px;
 }
 
@@ -71,10 +71,10 @@
 .actions {
   display: flex;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .actions > button {
   flex: 0 1 auto;
-  min-width: 120px;
+  min-width: 11.25rem;
 }
