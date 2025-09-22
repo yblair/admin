@@ -58,7 +58,6 @@
   color: var(--custom2-main);
   transition: all 0.25s ease-in-out;
   position: fixed;
-
   bottom: 1.25rem;
 }
 

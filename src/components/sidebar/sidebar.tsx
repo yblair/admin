@@ -70,7 +70,7 @@ export const Sidebar = () => {
       <button
         onClick={() => setCollapsed(!collapsed)}
         className={styles.collapse}
-        style={{ width: collapsed ? "64px" : "238px" }}
+        style={{ width: collapsed ? "64px" : "calc(238px - 1rem)" }}
       >
         <span>Collapse</span>
         <ChevronLeftIcon />
