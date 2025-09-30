@@ -107,18 +107,26 @@ export const Table = ({ data }: Props) => {
   const [focusedRowRef, setFocusedRowRef] = useState<HTMLElement | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
+  const [localData, setLocalData] = useState<ProductProps[]>(data);
+  const [recentlyChanged, setRecentlyChanged] = useState<
+    Map<number, StatusType>
+  >(new Map());
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 150);
     return () => clearTimeout(timer);
   }, []);
 
-  const filteredData = useMemo(() => {
-    if (!searchTerm.trim()) return data;
+  useEffect(() => {
+    setLocalData(data);
+  }, [data]);
 
-    return data.filter((item) =>
+  const filteredData = useMemo(() => {
+    if (!searchTerm.trim()) return localData;
+
+    return localData.filter((item) =>
       item.customer.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [data, searchTerm]);
+  }, [localData, searchTerm]);
 
   const table = useReactTable({
     data: filteredData,
@@ -150,6 +158,24 @@ export const Table = ({ data }: Props) => {
 
   const handleRowFocus = (element: HTMLElement) => {
     setFocusedRowRef(element);
+  };
+
+  const handleStatusChange = (transactionId: number, newStatus: StatusType) => {
+    setLocalData((prevData) =>
+      prevData.map((item) =>
+        item.id === transactionId ? { ...item, status: newStatus } : item
+      )
+    );
+
+    setRecentlyChanged((prev) => new Map(prev).set(transactionId, newStatus));
+
+    setTimeout(() => {
+      setRecentlyChanged((prev) => {
+        const newMap = new Map(prev);
+        newMap.delete(transactionId);
+        return newMap;
+      });
+    }, 3000);
   };
 
   return (
@@ -208,6 +234,15 @@ export const Table = ({ data }: Props) => {
                   <tr
                     key={row.id}
                     tabIndex={0}
+                    className={
+                      recentlyChanged.has(row.original.id)
+                        ? `${styles.statusChanged} ${
+                            recentlyChanged.get(row.original.id) === "Approved"
+                              ? styles.approved
+                              : styles.rejected
+                          }`
+                        : ""
+                    }
                     onFocus={(e) => handleRowFocus(e.currentTarget)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
@@ -243,7 +278,15 @@ export const Table = ({ data }: Props) => {
             {table.getRowModel().rows.map((row) => (
               <div
                 key={row.id}
-                className={styles.mobileCard}
+                className={`${styles.mobileCard} ${
+                  recentlyChanged.has(row.original.id)
+                    ? `${styles.statusChanged} ${
+                        recentlyChanged.get(row.original.id) === "Approved"
+                          ? styles.approved
+                          : styles.rejected
+                      }`
+                    : ""
+                }`}
                 tabIndex={0}
                 onFocus={(e) => handleRowFocus(e.currentTarget)}
                 onKeyDown={(e) => {
@@ -307,6 +350,7 @@ export const Table = ({ data }: Props) => {
         isOpen={isDrawerOpen}
         onClose={handleDrawerClose}
         transaction={transactionForDrawer}
+        onStatusChange={handleStatusChange}
       />
     </div>
   );

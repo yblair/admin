@@ -3,7 +3,7 @@ import styles from "./drawer.module.css";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Status } from "../status/status";
 import type { Status as StatusType } from "../../constants/status";
-import { PENDING } from "../../constants/status";
+import { PENDING, APPROVED, REJECTED } from "../../constants/status";
 import ActionButton from "../buttons/ActionButton";
 import ConfirmationModal from "../modal/ConfirmationModal";
 
@@ -22,9 +22,15 @@ interface DrawerProps {
   isOpen: boolean;
   onClose: () => void;
   transaction: Transaction | null;
+  onStatusChange?: (transactionId: number, newStatus: StatusType) => void;
 }
 
-const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, transaction }) => {
+const Drawer: React.FC<DrawerProps> = ({
+  isOpen,
+  onClose,
+  transaction,
+  onStatusChange,
+}) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [actionType, setActionType] = useState<"approve" | "reject" | null>(
     null
@@ -48,6 +54,10 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, transaction }) => {
   };
 
   const handleConfirmAction = () => {
+    if (transaction && onStatusChange && actionType) {
+      const newStatus = actionType === "approve" ? APPROVED : REJECTED;
+      onStatusChange(Number(transaction.id), newStatus);
+    }
     setModalOpen(false);
     onClose();
   };
